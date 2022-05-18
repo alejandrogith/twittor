@@ -1,12 +1,18 @@
 package main
 
 import (
-	"net/http"
+	"log"
+
+	"github.com/alejandrogith/bd"
+	"github.com/alejandrogith/handlers"
 )
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hola Mundo"))
-	})
-	http.ListenAndServe(":8000", nil)
+
+	if bd.ChequeoConnection() == 0 {
+		log.Fatal("Sin conexion a la BD")
+		return
+	}
+
+	handlers.Manejadores()
 }
