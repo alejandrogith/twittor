@@ -11,17 +11,16 @@ import (
 	"github.com/rs/cors"
 )
 
+/*Manejadores seteo mi puerto, el Handler y pongo a escuchar al Servidor */
 func Manejadores() {
 	router := mux.NewRouter()
+
+	router.HandleFunc("/registro", middlew.ChequeoBD(routers.Registro)).Methods("POST")
+
 	PORT := os.Getenv("PORT")
-
-	router.HandleFunc("registro", middlew.ChequeoBD(routers.Registro)).Methods("POST")
-
 	if PORT == "" {
 		PORT = "8080"
 	}
-
-	HANDLER := cors.AllowAll().Handler(router)
-	log.Fatal(http.ListenAndServe(":"+PORT, HANDLER))
-
+	handler := cors.AllowAll().Handler(router)
+	log.Fatal(http.ListenAndServe(":"+PORT, handler))
 }
