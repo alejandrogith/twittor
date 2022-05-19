@@ -10,7 +10,7 @@ import (
 
 /*MongoCN es el objeto de conexión a la BD */
 var MongoCN = ConectarBD()
-var clientOptions = options.Client().ApplyURI("mongodb+srv://root:EntrenamientoTwitter@twitter-kb2wp.mongodb.net/test?retryWrites=true&w=majority")
+var clientOptions = options.Client().ApplyURI("mongodb+srv://mongodb123:aW9CDhjdGv3c62wu@cluster0.c9euq.mongodb.net/?retryWrites=true&w=majority")
 
 /*ConectarBD es la función que me permite conectar la BD */
 func ConectarBD() *mongo.Client {
